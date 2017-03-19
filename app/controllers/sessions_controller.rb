@@ -1,12 +1,14 @@
 class SessionsController < ApplicationController
 
   def new 
-    #render signin form
+    @user = User.new
+    #render login form
   end 
 
   def create 
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:user][:id])
     session[:user_id] = @user.id
+    redirect_to user_path(@user)
   end 
   
 end 

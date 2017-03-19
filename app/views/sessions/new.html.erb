@@ -1,5 +1,8 @@
 <strong>Select your name</strong> <br />
 <%= form_for @user, url: signin_path do |f| %>
-<%= f.collection_select(:id, User.all, :id, :name) %> <br /><br />
-<%= f.submit "Sign in" %>
+<%= f.label :name %>
+<%= f.text_field :name %> <br />
+<%= f.label :password %>
+<%= f.password_field :password %> <br />
+<%= f.submit "Sign in", :id=>'Sign In' %>
 <% end %>

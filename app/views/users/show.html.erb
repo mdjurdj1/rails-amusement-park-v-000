@@ -2,5 +2,6 @@
 <strong>Tickets:</strong> <%= @user.tickets %> <br />
 <strong>Mood:</strong> <%= @user.mood %> <br />
 <strong>Height:</strong> <%= @user.height %> <br />
+<%= "ADMIN" if @user.admin %> <br />
 <%= link_to "Edit", user_path(@user) %> <br />
 <%= link_to "See Attractions", attractions_path %> <br />

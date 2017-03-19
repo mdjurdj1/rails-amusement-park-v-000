@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if !logged_in?
+      redirect_to root_path, :alert => "You must be logged in to view this content."
+    end 
   end
 
 

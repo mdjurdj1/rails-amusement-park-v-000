@@ -12,7 +12,7 @@
     </form>
 
 <% if current_user.admin %> 
-<%= link_to "Edit Attraction", attraction_path(@attraction) %> <br />
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %> <br />
 <% else %>
 <%= link_to "Back", attractions_path %> <br />
 <% end %>

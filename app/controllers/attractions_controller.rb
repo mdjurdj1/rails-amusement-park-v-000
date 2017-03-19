@@ -4,8 +4,29 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
   end
 
+  def new
+    @attraction = Attraction.new
+    unless current_user.admin
+      redirect_to attractions_path, alert: "Must be an admin to view this content."
+    end
+  end
+
+  def create
+    @attraction = Attraction.new(attraction_params)
+    if @attraction.save
+      redirect_to attraction_path(@attraction.id)
+    else
+      render :new, alert: "Attraction was not valid. Make sure to fill out all fields!"
+    end
+  end
+
   def show
     @attraction = Attraction.find(params[:id])
   end
-  
+
+
+  private
+  def attraction_params
+    params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
+  end
 end
